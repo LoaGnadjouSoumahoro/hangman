@@ -1,97 +1,156 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+*{
   margin: 0;
+  padding: 0;
+ box-sizing: border-box;
+ font-family: 'Open Sans', sans-serif;
+}
+
+body{
+display: flex;
+align-items: center;
+padding: 0 10px;
+justify-content: center;
+min-height: 100vh;
+background: teal;
+}
+.container{
+width: 850px;
+background: whitesmoke;
+display: flex;
+gap: 70px;
+padding: 60px 40px;
+border-radius: 10px;
+}
+
+.hangman-box img{
+max-width: 270px;
+}
+.hangman-box h1{
+font-size: 1.45rem;
+margin-bottom: 20px;
+text-align: center;
+text-transform: uppercase;
+}
+.word-display{
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+  gap: 10px;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.word-display .letter{
+width: 28px;
+font-size: 2rem;
+font-weight: 600;
+text-align: center;
+text-transform: uppercase;
+margin-bottom: 40px;
+border-bottom: 3px solid #000;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.word-display .letter.guessed{
+border-color: transparent;
+margin: -40px 0 35px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.game-box h4{
+text-align: center;
+font-size: 1.1rem;
+font-weight: 500;
+margin-bottom: 15px;
 }
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+.game-box h4 b{
+font-weight: 600;
 }
-
-.card {
-  padding: 2em;
+.game-box .guesses-text b{
+color: #ff0000;
 }
-
-.read-the-docs {
-  color: #888;
+.game-box .keyboard{
+display: flex;
+gap: 5px;
+margin-top: 40px;
+flex-wrap: wrap;
+justify-content: center;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+:where(.game-modal, .keyboard) button{
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.25s;
+  outline: none;
+  border: none;
+  padding: 7px;
+  outline: none;
+  background: teal;
+  border-radius: 4px;
+  text-transform: uppercase;
 }
-button:hover {
-  border-color: #646cff;
+.keyboard button{
+
+  padding: 7px;
+width: calc(100% / 9 - 5px);
+
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+:where(.game-modal, .keyboard) button:hover{
+opacity: 0.8;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* modal start */
+.game-modal{
+position: fixed;
+background: rgb(0,0,0, 0.6);
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+
 }
+.game-modal .content{
+  background:#fff ;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+padding: 30px;
+
+}
+.game-modal img{
+max-width: 130px;
+margin-bottom: 20px;
+}
+
+.game-modal h4{
+font-size: 1.53rem;
+}
+.game-modal P{
+font-size: 1.15rem;
+margin: 15px 0 30px;
+font-weight: 500;
+}
+.game-modal p b{
+color: teal;
+font-weight: 600;
+}
+.game-modal button{
+padding: 12px 23px;
+}
+/* modal End */
+
+/* Responsif  start*/
+@media (max-width: 782px){
+  .container{
+    flex-direction: column;
+    padding: 30px 15px;
+    align-items: 200px;
+    }
+    
+    .hangman-box img{
+    max-width: 200px;
+    }
+    .hangman-box h1{
+    display: none;
+
+}
+
+/* Responsif  End*/
